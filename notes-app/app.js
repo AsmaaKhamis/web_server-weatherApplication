@@ -1,9 +1,4 @@
-<<<<<<< HEAD
  const chalk =require('chalk')
-=======
-const chalk =require('chalk')
-const { demandOption, string } = require('yargs')
->>>>>>> a9a0275c7441904095840e0e31067f66c54961c5
 const yargs = require('yargs')
 const notes = require('./notes.js')
 //  const msg =get()
@@ -17,10 +12,6 @@ yargs.version('1.1.0')
 yargs.command({
     command: 'add',
     describe: 'Add a new note',
-<<<<<<< HEAD
-    handler: function(argv){
-       notes.addNote(argv.title, argv.body)
-=======
     builder:{
         title:{
             describe:'Note title',
@@ -30,15 +21,14 @@ yargs.command({
         body:{
             describe:'Note body',
             demandOption:true,
-            type:string
+            type:'string'
         }
 
     },
-    handler: function(argv){
-        console.log('Title: '+argv.title)
-        console.log('Body: '+argv.body)
->>>>>>> a9a0275c7441904095840e0e31067f66c54961c5
-    }
+    handler(argv){
+       notes.addNote(argv.title, argv.body)
+    },
+  
 
 })
 
@@ -46,24 +36,40 @@ yargs.command({
 yargs.command({
     command:'remove',
     describe: 'remove a note',
-    handler:function(){
-        console.log('Removing the note!')
+    builder:{
+        title:{
+            describe:'Note title',
+            demandOption: true,
+            type:'string'
+        }
+
+    },
+    handler(argv){
+        notes.removeNote(argv.title)    
     }
 })
 // listing the notes
 yargs.command({
     command:'list',
     describe:'list the command',
-    handler:function(){
-        console.log('List the notes!')
+    handler:function(argv){
+        notes.listNotes(argv.title, argv.body)
     }
 })
 // read the notes
 yargs.command({
     command:'read',
     describe:'read the command',
-    handler:function(){
-        console.log('Read the notes!')
+    builder:{
+        title:{
+            describe:'Note title',
+            demandOption: true,
+            type:'string'
+        }
+
+    },
+    handler(argv){
+        notes.readNote(argv.title)
     }
 })
 
