@@ -1,6 +1,6 @@
-const chalk =require('chalk')
+ const chalk =require('chalk')
 const yargs = require('yargs')
-const get = require('./notes.js')
+const notes = require('./notes.js')
 //  const msg =get()
 // console.log(msg)
 // console.log(chalk.blue.bold.bgWhite('Hello!'))
@@ -12,8 +12,8 @@ yargs.version('1.1.0')
 yargs.command({
     command: 'add',
     describe: 'Add a new note',
-    handler: function(){
-        console.log('Adding a new note!')
+    handler: function(argv){
+       notes.addNote(argv.title, argv.body)
     }
 
 })
