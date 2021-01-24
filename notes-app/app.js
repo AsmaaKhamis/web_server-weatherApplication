@@ -1,4 +1,9 @@
+<<<<<<< HEAD
  const chalk =require('chalk')
+=======
+const chalk =require('chalk')
+const { demandOption, string } = require('yargs')
+>>>>>>> a9a0275c7441904095840e0e31067f66c54961c5
 const yargs = require('yargs')
 const notes = require('./notes.js')
 //  const msg =get()
@@ -12,8 +17,27 @@ yargs.version('1.1.0')
 yargs.command({
     command: 'add',
     describe: 'Add a new note',
+<<<<<<< HEAD
     handler: function(argv){
        notes.addNote(argv.title, argv.body)
+=======
+    builder:{
+        title:{
+            describe:'Note title',
+            demandOption: true,
+            type:'string'
+        },
+        body:{
+            describe:'Note body',
+            demandOption:true,
+            type:string
+        }
+
+    },
+    handler: function(argv){
+        console.log('Title: '+argv.title)
+        console.log('Body: '+argv.body)
+>>>>>>> a9a0275c7441904095840e0e31067f66c54961c5
     }
 
 })
@@ -44,14 +68,11 @@ yargs.command({
 })
 
 
-
-
-
-
-
-
 // add, removr , read , list
-console.log(yargs.argv)
+// console.log(yargs.argv)
+// that line doing the same job as the above
+yargs.parse()
+
 
 
 
