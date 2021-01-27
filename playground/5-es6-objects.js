@@ -30,7 +30,9 @@ const product ={
 // console.log(stock)
 // console.log(rating)
 
-const transaction =(type, {lable,stock}) =>{
+const transaction =(type, {lable,stock} = {}) =>{
     console.log(type, lable ,stock)
 }
-transaction('order' ,product)
+// we pass an object 'product'
+transaction('order')
+
