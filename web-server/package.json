@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "hbs": "^4.0.1",
+    "heroku": "^7.47.11",
     "request": "^2.88.0"
   }
 }
