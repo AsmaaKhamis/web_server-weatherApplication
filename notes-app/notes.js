@@ -12,7 +12,6 @@ const addNote =(title,body) =>{
     // const duplicateNotes = notes.filter((note) =>{
     //     return note.title ===title
     // })
-
     if(!duplicateNote){
         notes.push({
             title:title,

@@ -13,18 +13,19 @@ const { MongoClient,ObjectID } =require('mongodb')
 const connectionURL ='mongodb://127.0.0.1:27017'
 const databaseName ='task-manager'
 
-const id = new ObjectID()
-// the original representation
-console.log(id.id.length)
-// the string representation
-console.log(id.toHexString().length)
-console.log(id.getTimestamp())
+// const id = new ObjectID()
+// // the original representation
+// console.log(id.id.length)
+// // the string representation
+// console.log(id.toHexString().length)
+// console.log(id.getTimestamp())
 
 MongoClient.connect(connectionURL ,{ useUnifiedTopology: true }, (error ,client) => {
     if(error){
         return console.log('Unable to connect t database !')
     }
    const db = client.db(databaseName)
+//  Create
 
 //    inserting first collection to the database
 //    db.collection('users').insertOne({
@@ -43,6 +44,7 @@ MongoClient.connect(connectionURL ,{ useUnifiedTopology: true }, (error ,client)
 
 
 // do not forgit that is an array not a function []
+// inserting maney users
 // db.collection('users').insertMany([
 //     {
 //         name:'ahmed',
@@ -83,4 +85,91 @@ MongoClient.connect(connectionURL ,{ useUnifiedTopology: true }, (error ,client)
 
 // })
 
+
+// Read 
+
+//    fetching user from the database
+// db.collection('users').findOne({name:'Asma'} ,(error ,user) => {
+//     if(error){
+//         return console.log('Unable to fetch')
+//     }
+//     console.log(user)
+// })
+// db.collection('users').find({ age:23 }).toArray( (errot, users) => {
+//     console.log(users)
+
+// })
+// db.collection('users').find({ age:23 }).count( (errot, counts) => {
+//     console.log(counts)
+
+// })
+
+
+// db.collection('tasks').findOne({_id: new ObjectID("6016cb1016916242554e4284")} ,(error,task) => {
+
+//     if(error){
+//         console.log('Unable to find tasks')
+//     }
+//     console.log(task)
+// })
+// db.collection('tasks').find({completed :false}).count( (error,countTask ) => {
+//     if(error){
+//         console.log('Unable to count')
+//     }
+//     console.log(countTask)
+// })
+
+// Update
+
+// update on
+// db.collection('users').updateOne({
+//     _id:new ObjectID("6016be40bcb52e394df1c31e")
+// } , {
+//        $inc:{
+//            age:1
+//        }
+          
+
+// }).then( ( result ) => {
+//     console.log(result)
+// }).catch( (error) => {
+//     console.log(error)
+
+//    })
+
+
+// update many
+// db.collection('tasks').updateMany({ 
+//     completed:false
+// } ,{ 
+//     $set:{
+//         completed:true
+
+//     }
+// }).then( (result) => {
+//     console.log(result)
+// }).catch( (error) => {
+//     console.log(error)
+// })
+
+
+// Delete
+
+// delete one
+// db.collection('users').deleteMany({
+//     age:24
+// }).then( (result) => {
+//     console.log(result)
+// }).catch( (error) => {
+//     console.log(error)
+// })
+
+// delete one
+db.collection('tasks').deleteOne( {
+    description :'Do tasks'
+}).then((result) => {
+    console.log(result)
+}).catch((error) => {
+    console.log(error)
+   })
 })
